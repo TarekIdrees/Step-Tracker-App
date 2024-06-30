@@ -20,7 +20,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             StepTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
+                    Text(
+                        text = "Hello",
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
