@@ -1,7 +1,7 @@
 package com.tareq.core.domain.util
 
 typealias GeneralError = Error
-typealias EmptyDataResult<GeneralError> = Result<Unit, GeneralError>
+typealias EmptyResult<GeneralError> = Result<Unit, GeneralError>
 
 sealed interface Result<out D, out E : GeneralError> {
     data class Success<out D>(val data: D) : Result<D, Nothing>
@@ -15,6 +15,6 @@ inline fun <T, E : GeneralError, R> Result<T, E>.map(map: (T) -> R): Result<R, E
     }
 }
 
-fun <T, E : GeneralError> Result<T, E>.asEmptyDataResult(): EmptyDataResult<E> {
+fun <T, E : GeneralError> Result<T, E>.asEmptyDataResult(): EmptyResult<E> {
     return map {}
 }
