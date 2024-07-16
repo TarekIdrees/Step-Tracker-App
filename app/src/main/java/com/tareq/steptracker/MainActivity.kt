@@ -5,10 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.tareq.auth.presentation.intro.IntroScreenRoot
-import com.tareq.auth.presentation.register.RegisterRoot
+import androidx.navigation.compose.rememberNavController
 import com.tareq.core.presentation.designsystem.StepTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,11 +17,12 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             StepTrackerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                   // IntroScreenRoot(onSignInClick = { }, onSignUpClick = {})
-                    RegisterRoot(
-                        onSignInClick = {  },
-                        onSuccessfulRegistration = {  })
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val navController = rememberNavController()
+                    NavigationRoot(navController = navController)
                 }
             }
         }

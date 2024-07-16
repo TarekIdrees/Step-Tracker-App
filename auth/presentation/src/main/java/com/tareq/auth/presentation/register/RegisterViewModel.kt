@@ -1,4 +1,3 @@
-@file:Suppress("OPT_IN_USAGE_FUTURE_ERROR")
 @file:OptIn(ExperimentalFoundationApi::class)
 
 package com.tareq.auth.presentation.register
@@ -25,16 +24,23 @@ class RegisterViewModel(
         state.email
             .textAsFlow()
             .onEach { email ->
+                val isEmailValid = userDataValidator.isValidEmail(email.toString())
                 state = state.copy(
-                    isEmailValid = userDataValidator.isValidEmail(email.toString())
+                    isEmailValid = isEmailValid,
+                    canRegister = state.passwordValidationState.isValidPassword && !isEmailValid
+                            && !state.isRegistering
                 )
             }
             .launchIn(viewModelScope)
         state.password
             .textAsFlow()
             .onEach { password ->
+                val passwordValidationState =
+                    userDataValidator.validatePassword(password.toString())
                 state = state.copy(
-                    passwordValidationState = userDataValidator.validatePassword(password.toString())
+                    passwordValidationState = passwordValidationState,
+                    canRegister = passwordValidationState.isValidPassword && state.isEmailValid
+                            && !state.isRegistering
                 )
             }
             .launchIn(viewModelScope)
