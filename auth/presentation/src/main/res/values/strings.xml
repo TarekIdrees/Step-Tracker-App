@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="step_tracker">Step Tracker</string>
+    <string name="weclom_to_step_tracker">Welcom to Step Tracker!</string>
+    <string name="step_tracker_description">Track your run, set goals and achive fitnes milstones with our intutive app.</string>
+    <string name="sing_up">Sign up</string>
+    <string name="login">Login</string>
+</resources>
