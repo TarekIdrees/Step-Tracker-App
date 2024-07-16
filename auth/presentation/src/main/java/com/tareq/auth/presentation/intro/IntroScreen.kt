@@ -72,14 +72,14 @@ fun IntroScreen(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = R.string.login),
                 isLoading = false,
-                onClick = { IntroAction.OnSignInClick }
+                onClick = { onAction(IntroAction.OnSignInClick) }
             )
             Spacer(modifier = Modifier.height(16.dp))
             StepTrackerActionButton(
                 modifier = Modifier.fillMaxWidth(),
                 text = stringResource(id = R.string.sing_up),
                 isLoading = false,
-                onClick = { IntroAction.OnSignUpClick }
+                onClick = { onAction(IntroAction.OnSignUpClick) }
             )
 
         }
