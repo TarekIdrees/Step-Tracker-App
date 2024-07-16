@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="step_tracker">Step Tracker</string>
-    <string name="weclom_to_step_tracker">Welcom to Step Tracker!</string>
-    <string name="step_tracker_description">Track your run, set goals and achive fitnes milstones with our intutive app.</string>
+    <string name="welcome_to_step_tracker">Welcome to Step Tracker!</string>
+    <string name="step_tracker_description">Track your run, set goals and achieve fitness milestones with our intuitive app.</string>
     <string name="sing_up">Sign up</string>
     <string name="login">Login</string>
     <string name="create_account">Create Account</string>
@@ -11,9 +11,10 @@
     <string name="email">Email</string>
     <string name="must_be_a_valid_email">Must be a valid email</string>
     <string name="password">Password</string>
-    <string name="at_least_x_characters">At least %d chracters</string>
+    <string name="at_least_x_characters">At least %d characters</string>
     <string name="at_least_one_number">At least one number</string>
-    <string name="contains_lower_case">Contains lower case charcter</string>
+    <string name="contains_lower_case">Contains lower case character</string>
     <string name="contains_upper_case">Contains upper case character</string>
     <string name="register">Register</string>
+    <string name="registration_successful">Registration Successful! You can login now</string>
 </resources>

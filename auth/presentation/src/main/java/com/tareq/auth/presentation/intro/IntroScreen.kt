@@ -58,7 +58,7 @@ fun IntroScreen(
                 .padding(bottom = 48.dp),
         ) {
             Text(
-                text = stringResource(id = R.string.weclom_to_step_tracker),
+                text = stringResource(id = R.string.welcome_to_step_tracker),
                 color = MaterialTheme.colorScheme.onBackground,
                 fontSize = 20.sp
             )
