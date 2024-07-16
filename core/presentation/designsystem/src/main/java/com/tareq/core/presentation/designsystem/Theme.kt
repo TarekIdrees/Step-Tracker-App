@@ -9,12 +9,12 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 val DarkColorScheme = darkColorScheme(
-    primary = StepTrackerGreen,
+    primary = StepTrackerYellow,
     background = StepTrackerBlack,
     surface = StepTrackerDarkGray,
     secondary = StepTrackerWhite,
     tertiary = StepTrackerWhite,
-    primaryContainer = StepTrackerGreen30,
+    primaryContainer = StepTrackerYellow30,
     onPrimary = StepTrackerBlack,
     onBackground = StepTrackerWhite,
     onSurface = StepTrackerWhite,
