@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.tareq.auth.presentation.intro.IntroScreenRoot
+import com.tareq.auth.presentation.register.RegisterRoot
 import com.tareq.core.presentation.designsystem.StepTrackerTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +18,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             StepTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    IntroScreenRoot(onSignInClick = { }, onSignUpClick = {})
+                   // IntroScreenRoot(onSignInClick = { }, onSignUpClick = {})
+                    RegisterRoot(
+                        onSignInClick = {  },
+                        onSuccessfulRegistration = {  })
                 }
             }
         }
