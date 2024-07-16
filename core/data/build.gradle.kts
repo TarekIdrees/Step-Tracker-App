@@ -12,5 +12,9 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.database)
 
+    // Koin
+    implementation(libs.bundles.koin)
+
+    // Timber
     implementation(libs.timber)
 }
