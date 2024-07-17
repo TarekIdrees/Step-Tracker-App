@@ -71,13 +71,17 @@ fun RegisterScreenRoot(
                 ).show()
                 onSuccessfulRegistration()
             }
-
-            RegisterEvent.LoginTextButtonClicked -> onSignInClick()
         }
     }
     RegisterScreen(
         state = viewModel.state,
-        onAction = viewModel::onAction
+        onAction = { action ->
+            when (action) {
+                RegisterAction.OnLoginClick -> onSignInClick()
+                else -> Unit
+            }
+            viewModel.onAction(action)
+        }
     )
 }
 
@@ -102,7 +106,7 @@ private fun RegisterScreen(
                 withStyle(
                     style = SpanStyle(
                         fontFamily = Poppins,
-                        color = StepTrackerGray
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 ) {
                     append(text = stringResource(id = R.string.already_have_an_account) + " ")

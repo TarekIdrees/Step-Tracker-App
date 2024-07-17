@@ -57,17 +57,12 @@ class RegisterViewModel(
 
     fun onAction(action: RegisterAction) {
         when (action) {
-            RegisterAction.OnLoginClick -> {
-                viewModelScope.launch {
-                    eventChannel.send(RegisterEvent.LoginTextButtonClicked)
-                }
-            }
-
             RegisterAction.OnTogglePasswordVisibilityClick -> {
                 state = state.copy(isPasswordVisible = !state.isPasswordVisible)
             }
 
             RegisterAction.OnRegisterClick -> register()
+            else -> Unit
         }
     }
 
