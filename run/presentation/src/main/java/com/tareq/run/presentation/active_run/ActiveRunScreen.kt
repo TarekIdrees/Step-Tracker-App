@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import com.tareq.core.presentation.designsystem.StartIcon
 import com.tareq.core.presentation.designsystem.StepTrackerTheme
 import com.tareq.core.presentation.designsystem.StopIcon
+import com.tareq.core.presentation.designsystem.components.StepTrackerActionButton
 import com.tareq.core.presentation.designsystem.components.StepTrackerDialog
 import com.tareq.core.presentation.designsystem.components.StepTrackerFloatingActionButton
 import com.tareq.core.presentation.designsystem.components.StepTrackerOutlinedActionButton
@@ -158,6 +159,34 @@ private fun ActiveRunScreen(
                     .fillMaxWidth()
             )
         }
+    }
+
+    if (!state.shouldTrack && state.hasStartedRunning) {
+        StepTrackerDialog(
+            title = stringResource(id = R.string.running_is_paused),
+            onDismiss = { onAction(ActiveRunAction.OnResumeRunClick) },
+            description = stringResource(id = R.string.resume_or_finish_running),
+            primaryButton = {
+                StepTrackerActionButton(
+                    text = stringResource(id = R.string.resume),
+                    isLoading = false,
+                    onClick = {
+                        onAction(ActiveRunAction.OnResumeRunClick)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            },
+            secondaryButton = {
+                StepTrackerOutlinedActionButton(
+                    text = stringResource(id = R.string.finish),
+                    isLoading = state.isSavingRun,
+                    onClick = {
+                        onAction(ActiveRunAction.OnFinishRunClick)
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+            })
+
     }
     if (state.showLocationRationale || state.showNotificationRationale) {
         StepTrackerDialog(
