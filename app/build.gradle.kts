@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.mapsplatform.secrets.plugin)
     alias(libs.plugins.step.tracker.android.application.compose)
     alias(libs.plugins.step.tracker.jvm.ktor)
 }

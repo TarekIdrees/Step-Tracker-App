@@ -9,7 +9,7 @@ data class ActiveRunState(
     val runData: RunData = RunData(),
     val shouldTrack: Boolean = false,
     val hasStartedRunning: Boolean = false,
-    val location: Location? = null,
+    val currentLocation: Location? = null,
     val isRunFinished: Boolean = false,
     val isSavingRun: Boolean = false,
     val showLocationRationale: Boolean = false,

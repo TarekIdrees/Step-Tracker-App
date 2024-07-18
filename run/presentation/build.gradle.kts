@@ -1,9 +1,11 @@
 plugins {
     alias(libs.plugins.step.tracker.android.feature.ui)
+    alias(libs.plugins.mapsplatform.secrets.plugin)
 }
 
 android {
     namespace = "com.tareq.run.presentation"
+
 }
 
 dependencies {
