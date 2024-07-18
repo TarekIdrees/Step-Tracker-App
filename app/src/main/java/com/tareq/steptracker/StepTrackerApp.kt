@@ -4,6 +4,7 @@ import android.app.Application
 import com.tareq.auth.data.di.authDataModule
 import com.tareq.auth.presentation.di.authViewModelModule
 import com.tareq.core.data.di.coreDateModule
+import com.tareq.run.presentation.di.runViewModelModule
 import com.tareq.steptracker.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -24,6 +25,7 @@ class StepTrackerApp : Application() {
                 authDataModule,
                 authViewModelModule,
                 coreDateModule,
+                runViewModelModule
             )
         }
     }

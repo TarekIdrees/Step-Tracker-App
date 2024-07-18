@@ -1,6 +1,5 @@
 package com.tareq.steptracker
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -10,6 +9,7 @@ import androidx.navigation.compose.navigation
 import com.tareq.auth.presentation.intro.IntroScreenRoot
 import com.tareq.auth.presentation.login.LoginScreenRoot
 import com.tareq.auth.presentation.register.RegisterScreenRoot
+import com.tareq.run.presentation.run_overview.RunOverviewScreenRoot
 
 @Composable
 fun NavigationRoot(
@@ -76,7 +76,7 @@ private fun NavGraphBuilder.runGraph(navController: NavHostController) {
         route = "run"
     ) {
         composable("run_overview") {
-            Text(text = "Run overview!")
+            RunOverviewScreenRoot()
         }
     }
 }
