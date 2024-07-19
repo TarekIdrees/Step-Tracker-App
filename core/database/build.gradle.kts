@@ -8,8 +8,11 @@ android {
 }
 
 dependencies {
-    //Modules
+    // Modules
     implementation(projects.core.domain)
 
     implementation(libs.org.mongodb.bson)
+
+    // Koin
+    implementation(libs.bundles.koin)
 }
