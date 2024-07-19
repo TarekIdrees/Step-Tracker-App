@@ -19,7 +19,8 @@ val DarkColorScheme = darkColorScheme(
     onBackground = StepTrackerWhite,
     onSurface = StepTrackerWhite,
     onSurfaceVariant = StepTrackerGray,
-    error = StepTrackerDarkRed
+    error = StepTrackerDarkRed,
+    errorContainer = StepTrackerDarkRed5
 )
 
 @Composable
