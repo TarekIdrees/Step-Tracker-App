@@ -35,6 +35,7 @@ import com.tareq.core.presentation.designsystem.components.StepTrackerToolbar
 import com.tareq.run.presentation.R
 import com.tareq.run.presentation.active_run.components.RunDataCard
 import com.tareq.run.presentation.active_run.maps.TrackerMap
+import com.tareq.run.presentation.active_run.service.ActiveRunService
 import com.tareq.run.presentation.util.hasLocationPermission
 import com.tareq.run.presentation.util.hasNotificationPermission
 import com.tareq.run.presentation.util.shouldShowLocationPermissionRationale
@@ -43,10 +44,12 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ActiveRunScreenScreenRoot(
+    onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     viewModel: ActiveRunViewModel = koinViewModel(),
 ) {
     ActiveRunScreen(
         state = viewModel.state,
+        onServiceToggle = onServiceToggle,
         onAction = viewModel::onAction
     )
 }
@@ -54,6 +57,7 @@ fun ActiveRunScreenScreenRoot(
 @Composable
 private fun ActiveRunScreen(
     state: ActiveRunState,
+    onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     onAction: (ActiveRunAction) -> Unit
 ) {
     val context = LocalContext.current
@@ -108,6 +112,17 @@ private fun ActiveRunScreen(
         }
     }
 
+    LaunchedEffect(key1 = state.shouldTrack) {
+        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
+            onServiceToggle(true)
+        }
+    }
+
+    LaunchedEffect(key1 = state.isRunFinished) {
+        if(state.isRunFinished){
+            onServiceToggle(false)
+        }
+    }
     StepTrackerScaffold(
         withGradient = false,
         topAppBar = {
@@ -249,6 +264,7 @@ private fun ActiveRunScreenPreview() {
     StepTrackerTheme {
         ActiveRunScreen(
             state = ActiveRunState(),
+            onServiceToggle = {},
             onAction = {}
         )
     }
