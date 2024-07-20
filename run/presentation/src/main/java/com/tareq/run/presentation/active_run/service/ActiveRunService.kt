@@ -31,6 +31,7 @@ class ActiveRunService : Service() {
     private val baseNotification by lazy {
         NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo)
+            .setOnlyAlertOnce(true)
             .setContentTitle(getString(com.tareq.run.presentation.R.string.active_run))
     }
 
@@ -95,7 +96,7 @@ class ActiveRunService : Service() {
             val channel = NotificationChannel(
                 CHANNEL_ID,
                 getString(com.tareq.run.presentation.R.string.active_run),
-                NotificationManager.IMPORTANCE_LOW
+                NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)
         }
