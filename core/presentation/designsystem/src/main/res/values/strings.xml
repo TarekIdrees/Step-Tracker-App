@@ -4,4 +4,5 @@
     <string name="hide_password">Hide password</string>
     <string name="go_back">go back</string>
     <string name="open_menu">Open menu</string>
+    <string name="empty_runs_start_new_run">No recordes founded, Press the icon below and start a new journy.</string>
 </resources>
