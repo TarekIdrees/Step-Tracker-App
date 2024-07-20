@@ -4,5 +4,5 @@ import com.tareq.core.presentation.ui.UiText
 
 sealed interface ActiveRunEvent {
     data class Error(val error: UiText) : ActiveRunEvent
-    data object RunSaved : ActiveRunAction
+    data object RunSaved : ActiveRunEvent
 }

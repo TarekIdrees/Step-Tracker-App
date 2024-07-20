@@ -14,7 +14,7 @@ import com.tareq.core.presentation.designsystem.StepTrackerTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
-    val viewModel by viewModel<MainViewModel>()
+    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

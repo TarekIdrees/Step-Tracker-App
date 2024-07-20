@@ -6,6 +6,7 @@ import com.tareq.auth.presentation.di.authViewModelModule
 import com.tareq.core.data.di.coreDateModule
 import com.tareq.core.database.di.databaseModule
 import com.tareq.run.location.di.locationModule
+import com.tareq.run.network.di.networkModule
 import com.tareq.run.presentation.di.runPresentationModule
 import com.tareq.steptracker.di.appModule
 import kotlinx.coroutines.CoroutineScope
@@ -33,7 +34,8 @@ class StepTrackerApp : Application() {
                 coreDateModule,
                 runPresentationModule,
                 locationModule,
-                databaseModule
+                databaseModule,
+                networkModule
             )
         }
     }
