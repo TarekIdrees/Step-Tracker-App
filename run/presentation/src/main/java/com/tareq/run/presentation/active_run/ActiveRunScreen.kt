@@ -6,6 +6,7 @@ import android.Manifest
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -55,7 +56,7 @@ fun ActiveRunScreenScreenRoot(
 ) {
     val context = LocalContext.current
     ObserveAsEvent(flow = viewModel.events) { event ->
-        when(event) {
+        when (event) {
             is ActiveRunEvent.Error -> {
                 Toast.makeText(
                     context,
@@ -63,6 +64,7 @@ fun ActiveRunScreenScreenRoot(
                     Toast.LENGTH_LONG
                 ).show()
             }
+
             ActiveRunEvent.RunSaved -> onFinish()
         }
     }
@@ -71,12 +73,13 @@ fun ActiveRunScreenScreenRoot(
         state = viewModel.state,
         onServiceToggle = onServiceToggle,
         onAction = { action ->
-            when(action) {
+            when (action) {
                 is ActiveRunAction.OnBackButtonClick -> {
-                    if(!viewModel.state.hasStartedRunning) {
+                    if (!viewModel.state.hasStartedRunning) {
                         onBack()
                     }
                 }
+
                 else -> Unit
             }
             viewModel.onAction(action)
@@ -216,6 +219,8 @@ private fun ActiveRunScreen(
         }
     }
 
+    Log.d("Tarek", "${state.shouldTrack} ${state.hasStartedRunning}")
+
     if (!state.shouldTrack && state.hasStartedRunning) {
         StepTrackerDialog(
             title = stringResource(id = R.string.running_is_paused),
@@ -240,8 +245,8 @@ private fun ActiveRunScreen(
                     },
                     modifier = Modifier.weight(1f)
                 )
-            })
-
+            }
+        )
     }
     if (state.showLocationRationale || state.showNotificationRationale) {
         StepTrackerDialog(
