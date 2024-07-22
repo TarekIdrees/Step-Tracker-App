@@ -35,6 +35,10 @@ gradlePlugin {
             id = "com.tareq.steptracker.android.feature.ui"
             implementationClass = "AndroidFeatureUiConventionPlugin"
         }
+        register("androidDynamicFeature") {
+            id = "com.tareq.steptracker.android.dynamic.feature"
+            implementationClass = "AndroidDynamicFeatureConventionPlugin"
+        }
         register("androidRoom") {
             id = "com.tareq.steptracker.android.room"
             implementationClass = "AndroidRoomConventionPlugin"

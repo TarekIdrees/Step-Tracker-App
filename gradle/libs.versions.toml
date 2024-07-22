@@ -142,6 +142,7 @@ step-tracker-android-library = { id = "com.tareq.steptracker.android.library", v
 step-tracker-android-library-comose = { id = "com.tareq.steptracker.android.library.compose", version = "unspecified" }
 step-tracker-android-feature-ui = { id = "com.tareq.steptracker.android.feature.ui", version = "unspecified" }
 step-tracker-android-room = { id = "com.tareq.steptracker.android.room", version = "unspecified" }
+step-tracker-android-dynamic-feature = { id = "com.tareq.steptracker.android.dynamic.feature", version = "unspecified" }
 step-tracker-jvm-library = { id = "com.tareq.steptracker.jvm.library", version = "unspecified" }
 step-tracker-jvm-ktor = { id = "com.tareq.steptracker.jvm.ktor", version = "unspecified" }
 
