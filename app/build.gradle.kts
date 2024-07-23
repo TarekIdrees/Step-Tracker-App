@@ -17,7 +17,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    dynamicFeatures += setOf(":analytics:analytics-feature")
+    dynamicFeatures += setOf(":analytics:analytics_feature")
 }
 
 dependencies {
@@ -75,5 +75,8 @@ dependencies {
 
     // Timber
     implementation(libs.timber)
+
+    // Dynamic feature
+    api(libs.core)
 
 }

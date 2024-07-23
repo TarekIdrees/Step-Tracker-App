@@ -2,6 +2,7 @@
 agp = "8.5.0"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
+playCore = "1.10.3"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -78,7 +79,7 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutines" }
 
-
+core = { module = "com.google.android.play:core", version.ref = "playCore" }
 
 android-play-asset-delivery = { module = "com.google.android.play:asset-delivery", version.ref = "androidPlayAssetDelivery" }
 android-play-asset-delivery-ktx = { module = "com.google.android.play:asset-delivery-ktx", version.ref = "androidPlayAssetDelivery" }

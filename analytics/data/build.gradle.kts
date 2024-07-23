@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.step.tracker.android.library)
+    alias(libs.plugins.step.tracker.android.room)
 }
 
 android {
@@ -14,4 +15,5 @@ dependencies {
     implementation(projects.analytics.domain)
 
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.bundles.koin)
 }
