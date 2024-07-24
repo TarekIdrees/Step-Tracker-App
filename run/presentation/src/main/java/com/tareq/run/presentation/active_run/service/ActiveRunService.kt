@@ -19,6 +19,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject
@@ -59,8 +61,8 @@ class ActiveRunService : Service() {
     }
 
     private fun start(activityClass: Class<*>) {
-        if (!isServiceActive) {
-            isServiceActive = true
+        if (!isServiceActive.value) {
+            _isServiceActive.value = true
             createNotificationChannel()
 
             val activityIntent = Intent(applicationContext, activityClass).apply {
@@ -104,14 +106,16 @@ class ActiveRunService : Service() {
 
     private fun stop() {
         stopSelf()
-        isServiceActive = false
+        _isServiceActive.value = false
         serviceScope.cancel()
 
         serviceScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     }
 
     companion object {
-        var isServiceActive = false
+        private val _isServiceActive = MutableStateFlow(false)
+        val isServiceActive = _isServiceActive.asStateFlow()
+
         private const val CHANNEL_ID = "active_run"
         private const val DEEPLINK = "steptracker://active_run"
         private const val NOTIFICATION_ID = 1

@@ -33,8 +33,8 @@ class ActiveRunViewModel(
 
     var state by mutableStateOf(
         ActiveRunState(
-            shouldTrack = ActiveRunService.isServiceActive && runningTracker.isTracking.value,
-            hasStartedRunning = ActiveRunService.isServiceActive
+            shouldTrack = ActiveRunService.isServiceActive.value && runningTracker.isTracking.value,
+            hasStartedRunning = ActiveRunService.isServiceActive.value
         )
     )
         private set
@@ -101,7 +101,7 @@ class ActiveRunViewModel(
             ActiveRunAction.OnFinishRunClick -> {
                 state = state.copy(
                     isRunFinished = true,
-                    isSavingRun = true
+                    isSavingRun = true,
                 )
             }
 
@@ -180,7 +180,7 @@ class ActiveRunViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        if (!ActiveRunService.isServiceActive) {
+        if (!ActiveRunService.isServiceActive.value) {
             runningTracker.stopObservingLocation()
         }
     }

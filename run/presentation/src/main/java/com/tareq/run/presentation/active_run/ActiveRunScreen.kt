@@ -6,7 +6,6 @@ import android.Manifest
 import android.content.Context
 import android.graphics.Bitmap
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -21,11 +20,13 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tareq.core.presentation.designsystem.StartIcon
 import com.tareq.core.presentation.designsystem.StepTrackerTheme
 import com.tareq.core.presentation.designsystem.StopIcon
@@ -145,17 +146,19 @@ private fun ActiveRunScreen(
         }
     }
 
-    LaunchedEffect(key1 = state.shouldTrack) {
-        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
-            onServiceToggle(true)
-        }
-    }
-
     LaunchedEffect(key1 = state.isRunFinished) {
         if (state.isRunFinished) {
             onServiceToggle(false)
         }
     }
+
+    val isServiceActive by ActiveRunService.isServiceActive.collectAsStateWithLifecycle()
+    LaunchedEffect(key1 = state.shouldTrack, isServiceActive) {
+        if (context.hasLocationPermission() && state.shouldTrack && !isServiceActive) {
+            onServiceToggle(true)
+        }
+    }
+
     StepTrackerScaffold(
         withGradient = false,
         topAppBar = {
@@ -218,8 +221,6 @@ private fun ActiveRunScreen(
             )
         }
     }
-
-    Log.d("Tarek", "${state.shouldTrack} ${state.hasStartedRunning}")
 
     if (!state.shouldTrack && state.hasStartedRunning) {
         StepTrackerDialog(
