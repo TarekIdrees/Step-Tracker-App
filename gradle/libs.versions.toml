@@ -39,6 +39,13 @@ kotlinx-serialization = "1.6.3"
 secretsPlugin = "2.0.1"
 playServicesMaps = "19.0.0"
 
+# Wear
+composeWearOs = "1.3.1"
+composeMaterialWearOs = "1.0.0-alpha23"
+health = "1.0.0-rc02"
+playServicesWearable = "18.2.0"
+wear = "1.3.0"
+
 
 # Project versions
 projectApplicationId = "com.tareq.steptracker"
@@ -47,6 +54,8 @@ projectMinSdkVersion = "25"
 projectTargetSdkVersion = "34"
 projectCompileSdkVersion = "34"
 projectVersionCode = "1"
+composeMaterial = "1.2.1"
+composeFoundation = "1.2.1"
 
 
 [libraries]
@@ -74,6 +83,14 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Wear
+androidx-wear-compose-material = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterialWearOs" }
+androidx-wear-compose-foundation = { group = "androidx.wear.compose", name = "compose-foundation", version.ref = "composeWearOs" }
+androidx-wear-compose-ui-tooling = { group = "androidx.wear.compose", name = "compose-ui-tooling", version.ref = "composeWearOs" }
+android-gms-play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "playServicesWearable" }
+androidx-health-services-client = { group = "androidx.health", name = "health-services-client", version.ref = "health" }
+androidx-wear = { group = "androidx.wear", name = "wear", version.ref = "wear" }
 
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
@@ -123,6 +140,7 @@ android-tools-common = { group = "com.android.tools", name = "common", version.r
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+androidx-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "composeMaterial" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -139,6 +157,7 @@ mapsplatform-secrets-plugin = { id = "com.google.android.libraries.mapsplatform.
 
 step-tracker-android-application = { id = "com.tareq.steptracker.android.application", version = "unspecified" }
 step-tracker-android-application-compose = { id = "com.tareq.steptracker.android.application.compose", version = "unspecified" }
+step-tracker-android-application-wear-compose = { id = "com.tareq.steptracker.android.application.wear.compose", version = "unspecified" }
 step-tracker-android-library = { id = "com.tareq.steptracker.android.library", version = "unspecified" }
 step-tracker-android-library-comose = { id = "com.tareq.steptracker.android.library.compose", version = "unspecified" }
 step-tracker-android-feature-ui = { id = "com.tareq.steptracker.android.feature.ui", version = "unspecified" }

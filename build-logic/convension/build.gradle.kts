@@ -23,6 +23,10 @@ gradlePlugin {
             id = "com.tareq.steptracker.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
+        register("androidApplicationWearCompose") {
+            id = "com.tareq.steptracker.android.application.wear.compose"
+            implementationClass = "AndroidApplicationWearComposeConventionPlugin"
+        }
         register("androidLibrary") {
             id = "com.tareq.steptracker.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
