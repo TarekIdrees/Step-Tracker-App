@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.timber)
 
     // Dynamic feature
-    api(libs.core)
+    implementation(libs.android.play.feature.delivery)
+    implementation(libs.android.play.feature.delivery.ktx)
 
 }

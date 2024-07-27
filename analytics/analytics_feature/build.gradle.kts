@@ -14,4 +14,8 @@ dependencies {
     implementation(projects.analytics.domain)
     implementation(projects.analytics.data)
     implementation(projects.core.database)
+
+    // Dynamic feature
+    implementation(libs.android.play.feature.delivery)
+    implementation(libs.android.play.feature.delivery.ktx)
 }
