@@ -3,7 +3,6 @@ package com.tareq.wear.run.data
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.core.content.ContextCompat
 import androidx.health.services.client.ExerciseUpdateCallback
 import androidx.health.services.client.HealthServices
 import androidx.health.services.client.HealthServicesException
@@ -172,17 +171,16 @@ class HealthServicesExerciseTracker(
         }
 
         val exerciseInfoResult = getActiveExerciseInfo()
-        if (exerciseInfoResult is Result.Error) {
-            return exerciseInfoResult
+        return if (exerciseInfoResult is Result.Error) {
+            exerciseInfoResult
+        } else {
+            Result.Success(Unit)
         }
-        return Result.Success(Unit)
     }
 
     private fun hasBodySensorsPermission(): Boolean {
-        return ContextCompat.checkSelfPermission(
-            context,
-            Manifest.permission.BODY_SENSORS
-        ) == PackageManager.PERMISSION_GRANTED
+        return context.checkSelfPermission(Manifest.permission.BODY_SENSORS) ==
+                PackageManager.PERMISSION_GRANTED
     }
 
     private suspend fun getActiveExerciseInfo(): EmptyResult<ExerciseError> {
