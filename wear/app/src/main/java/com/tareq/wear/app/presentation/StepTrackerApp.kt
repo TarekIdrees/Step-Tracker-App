@@ -1,6 +1,7 @@
 package com.tareq.wear.app.presentation
 
 import android.app.Application
+import com.tareq.wear.run.data.di.wearRunDataModule
 import com.tareq.wear.run.presentation.di.runPresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,7 +15,8 @@ class StepTrackerApp: Application() {
             androidLogger()
             androidContext(this@StepTrackerApp)
             modules(
-                runPresentationModule
+                runPresentationModule,
+                wearRunDataModule
             )
         }
     }
