@@ -1,9 +1,9 @@
 plugins {
-    alias(libs.plugins.step.tracker.android.application.wear.compose)
+    alias(libs.plugins.step.tracker.android.library.comose)
 }
 
 android {
-    namespace = "com.tareq.wear.app"
+    namespace = "com.tareq.wear.run.presentation"
 
     defaultConfig {
         minSdk = 30
@@ -14,10 +14,14 @@ dependencies {
 
     // Modules
     implementation(projects.core.presentation.designsystemWear)
-    implementation(projects.wear.run.presentation)
+    implementation(projects.core.presentation.ui)
     implementation(projects.wear.run.domain)
-    implementation(projects.wear.run.data)
 
+    // Wear
+    implementation(libs.androidx.wear.compose.foundation)
+    implementation(libs.androidx.wear.compose.material)
+    implementation(libs.androidx.wear.compose.ui.tooling)
+    implementation(libs.android.gms.play.services.wearable)
 
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling)
@@ -25,6 +29,5 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.core.splashscreen)
     implementation(libs.bundles.koin.compose)
 }
