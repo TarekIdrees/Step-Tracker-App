@@ -1,5 +1,8 @@
 package com.tareq.wear.run.presentation
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,6 +37,10 @@ import com.tareq.core.presentation.ui.toFormattedKm
 import com.tareq.wear.run.presentation.components.RunDataCard
 import com.tareq.wear.run.presentation.components.ToggleRunButton
 import org.koin.androidx.compose.koinViewModel
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.LaunchedEffect
+import android.content.pm.PackageManager
+import android.os.Build
 
 @Composable
 fun TrackerScreenRoot(
@@ -50,6 +57,39 @@ private fun TrackerScreen(
     state: TrackerState,
     onAction: (TrackerAction) -> Unit
 ) {
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions(),
+    ) { perms ->
+        val hasBodySensorPermission = perms[Manifest.permission.BODY_SENSORS] == true
+        onAction(TrackerAction.OnBodySensorPermissionResult(hasBodySensorPermission))
+    }
+
+    val context = LocalContext.current
+    LaunchedEffect(key1 = true) {
+        val hasBodySensorPermission = context.checkSelfPermission(
+            Manifest.permission.BODY_SENSORS
+        ) == PackageManager.PERMISSION_GRANTED
+        onAction(TrackerAction.OnBodySensorPermissionResult(hasBodySensorPermission))
+
+        val hasNotificationPermission = if (Build.VERSION.SDK_INT >= 33) {
+            context.checkSelfPermission(
+                Manifest.permission.POST_NOTIFICATIONS
+            ) == PackageManager.PERMISSION_GRANTED
+        } else {
+            true
+        }
+
+        val permissions = mutableListOf<String>()
+        if (!hasBodySensorPermission) {
+            permissions.add(Manifest.permission.BODY_SENSORS)
+        }
+        if (!hasNotificationPermission && Build.VERSION.SDK_INT >= 33) {
+            permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+        }
+
+        permissionLauncher.launch(permissions.toTypedArray())
+    }
+
     if (state.isConnectedPhoneNearby) {
         Column(
             modifier = Modifier
