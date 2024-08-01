@@ -28,6 +28,9 @@ dependencies {
     implementation(projects.core.data)
     implementation(projects.core.database)
 
+    implementation(projects.core.connectiivity.domain)
+    implementation(projects.core.connectiivity.data)
+
     implementation(projects.auth.presentation)
     implementation(projects.auth.domain)
     implementation(projects.auth.data)

@@ -7,6 +7,7 @@ dependencies {
 
     // Modules
     implementation(projects.core.domain)
+    implementation(projects.core.connectiivity.domain)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)

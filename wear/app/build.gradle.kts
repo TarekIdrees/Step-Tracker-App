@@ -14,9 +14,13 @@ dependencies {
 
     // Modules
     implementation(projects.core.presentation.designsystemWear)
+
     implementation(projects.wear.run.presentation)
     implementation(projects.wear.run.domain)
     implementation(projects.wear.run.data)
+
+    implementation(projects.core.connectiivity.domain)
+    implementation(projects.core.connectiivity.data)
 
 
     implementation(libs.androidx.compose.ui)

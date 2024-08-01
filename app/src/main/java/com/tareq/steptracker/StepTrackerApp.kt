@@ -5,6 +5,7 @@ import android.content.Context
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.tareq.auth.data.di.authDataModule
 import com.tareq.auth.presentation.di.authViewModelModule
+import com.tareq.core.connectivity.data.di.coreConnectivityDataModule
 import com.tareq.core.data.di.coreDateModule
 import com.tareq.core.database.di.databaseModule
 import com.tareq.run.data.di.runDataModule
@@ -41,7 +42,8 @@ class StepTrackerApp : Application() {
                 locationModule,
                 databaseModule,
                 networkModule,
-                runDataModule
+                runDataModule,
+                coreConnectivityDataModule
             )
         }
     }

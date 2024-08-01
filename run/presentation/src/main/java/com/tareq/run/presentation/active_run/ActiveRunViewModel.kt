@@ -25,10 +25,14 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import com.tareq.core.domain.util.Result
 import com.tareq.core.presentation.ui.asUiText
+import com.tareq.run.domain.WatchConnector
+import kotlinx.coroutines.flow.filterNotNull
+import timber.log.Timber
 
 class ActiveRunViewModel(
     private val runningTracker: RunningTracker,
-    private val runRepository: RunRepository
+    private val runRepository: RunRepository,
+    private val watchConnector: WatchConnector
 ) : ViewModel() {
 
     var state by mutableStateOf(
@@ -54,6 +58,14 @@ class ActiveRunViewModel(
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
     init {
+        watchConnector
+            .connectedDevice
+            .filterNotNull()
+            .onEach {
+                Timber.d(" New device connected: ${it.displayName}")
+            }
+            .launchIn(viewModelScope)
+
         hasLocationPermission
             .onEach { hasPermission ->
                 if (hasPermission) {

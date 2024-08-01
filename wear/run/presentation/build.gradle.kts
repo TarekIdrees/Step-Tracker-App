@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.core.presentation.designsystemWear)
     implementation(projects.core.presentation.ui)
     implementation(projects.wear.run.domain)
+    implementation(projects.core.connectiivity.domain)
 
     // Wear
     implementation(libs.androidx.wear.compose.foundation)

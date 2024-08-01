@@ -13,6 +13,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.database)
     implementation(projects.run.domain)
+    implementation(projects.core.connectiivity.domain)
 
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.google.android.gms.play.services.location)

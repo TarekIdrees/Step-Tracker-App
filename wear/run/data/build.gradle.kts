@@ -15,6 +15,7 @@ dependencies {
     // Modules
     implementation(projects.wear.run.domain)
     implementation(projects.core.domain)
+    implementation(projects.core.connectiivity.domain)
 
     implementation(libs.androidx.health.services.client)
     implementation(libs.bundles.koin)
