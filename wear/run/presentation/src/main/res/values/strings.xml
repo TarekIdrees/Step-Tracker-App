@@ -8,4 +8,6 @@
     <string name="pause_run">Pause run</string>
     <string name="start_run">start run</string>
     <string name="connect_your_phone">The app requires the Step Tracker app to be installed and connected.</string>
+    <string name="error_ongoing_exercise">There is alreay ongiong exercise.</string>
+    <string name="error_exercise_already_ended">The exercise has already ended.</string>
 </resources>

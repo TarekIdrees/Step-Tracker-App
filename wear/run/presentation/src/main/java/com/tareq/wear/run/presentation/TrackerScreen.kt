@@ -41,11 +41,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.LaunchedEffect
 import android.content.pm.PackageManager
 import android.os.Build
+import android.widget.Toast
+import com.tareq.core.presentation.ui.ObserveAsEvent
 
 @Composable
 fun TrackerScreenRoot(
     viewModel: TrackerViewModel = koinViewModel(),
 ) {
+    val context = LocalContext.current
+    ObserveAsEvent(viewModel.events) { event ->
+        when(event) {
+            is TrackerEvent.Error -> {
+                Toast.makeText(
+                    context,
+                    event.message.asString(context),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            TrackerEvent.RunFinished -> Unit
+        }
+    }
+
     TrackerScreen(
         state = viewModel.state,
         onAction = viewModel::onAction
