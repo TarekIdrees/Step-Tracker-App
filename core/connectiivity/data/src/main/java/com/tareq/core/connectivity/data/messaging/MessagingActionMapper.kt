@@ -13,6 +13,7 @@ fun MessagingAction.toMessagingActionDto(): MessagingActionDto {
         is MessagingAction.TimeUpdate -> MessagingActionDto.TimeUpdate(elapsedDuration)
         MessagingAction.Trackable -> MessagingActionDto.Trackable
         MessagingAction.Untrackable -> MessagingActionDto.Untrackable
+        MessagingAction.CancelRunningTracker -> MessagingActionDto.CancelRunningTracker
     }
 }
 
@@ -27,5 +28,6 @@ fun MessagingActionDto.toMessagingAction(): MessagingAction {
         is MessagingActionDto.TimeUpdate -> MessagingAction.TimeUpdate(elapsedDuration)
         MessagingActionDto.Trackable -> MessagingAction.Trackable
         MessagingActionDto.Untrackable -> MessagingAction.Untrackable
+        MessagingActionDto.CancelRunningTracker -> MessagingAction.CancelRunningTracker
     }
 }

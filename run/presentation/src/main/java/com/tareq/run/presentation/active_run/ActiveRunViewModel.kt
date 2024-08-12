@@ -1,5 +1,6 @@
 package com.tareq.run.presentation.active_run
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -62,14 +63,6 @@ class ActiveRunViewModel(
     }.stateIn(viewModelScope, SharingStarted.Lazily, false)
 
     init {
-        watchConnector
-            .connectedDevice
-            .filterNotNull()
-            .onEach {
-                Timber.d(" New device connected: ${it.displayName}")
-            }
-            .launchIn(viewModelScope)
-
         hasLocationPermission
             .onEach { hasPermission ->
                 if (hasPermission) {
@@ -120,6 +113,14 @@ class ActiveRunViewModel(
                         MessagingAction.Pause
                     } else {
                         MessagingAction.StartOrResume
+                    }
+                }
+
+                ActiveRunAction.OnBackButtonClick -> {
+                    if (state.hasStartedRunning) {
+                        MessagingAction.Pause
+                    } else {
+                        MessagingAction.CancelRunningTracker
                     }
                 }
 
