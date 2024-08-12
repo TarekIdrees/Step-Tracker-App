@@ -22,6 +22,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.time.Duration
 import com.tareq.core.domain.util.Result
+import com.tareq.core.notification.ActiveRunService
 import com.tareq.wear.run.presentation.util.toUiText
 
 class TrackerViewModel(
@@ -30,7 +31,11 @@ class TrackerViewModel(
     private val runningTracker: RunningTracker
 ) : ViewModel() {
 
-    var state by mutableStateOf(TrackerState())
+    var state by mutableStateOf(TrackerState(
+        hasStartedRunning = ActiveRunService.isServiceActive.value,
+        isRunActive = ActiveRunService.isServiceActive.value && runningTracker.isTrackable.value,
+        isTrackable = ActiveRunService.isServiceActive.value
+    ))
         private set
 
     private val hasBodySensorPermission = MutableStateFlow(false)

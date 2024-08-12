@@ -22,6 +22,8 @@ dependencies {
     implementation(projects.core.connectiivity.domain)
     implementation(projects.core.connectiivity.data)
 
+    implementation(projects.core.notification)
+
 
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling)

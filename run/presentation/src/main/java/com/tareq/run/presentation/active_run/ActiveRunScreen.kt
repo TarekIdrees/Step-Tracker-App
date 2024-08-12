@@ -40,7 +40,7 @@ import com.tareq.core.presentation.ui.ObserveAsEvent
 import com.tareq.run.presentation.R
 import com.tareq.run.presentation.active_run.components.RunDataCard
 import com.tareq.run.presentation.active_run.maps.TrackerMap
-import com.tareq.run.presentation.active_run.service.ActiveRunService
+import com.tareq.core.notification.ActiveRunService
 import com.tareq.run.presentation.util.hasLocationPermission
 import com.tareq.run.presentation.util.hasNotificationPermission
 import com.tareq.run.presentation.util.shouldShowLocationPermissionRationale

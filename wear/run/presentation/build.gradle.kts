@@ -18,6 +18,7 @@ dependencies {
     implementation(projects.core.connectiivity.domain)
     implementation(projects.core.domain)
     implementation(projects.wear.run.domain)
+    implementation(projects.core.notification)
 
 
     // Wear

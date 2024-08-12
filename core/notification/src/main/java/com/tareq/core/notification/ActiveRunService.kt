@@ -1,4 +1,4 @@
-package com.tareq.run.presentation.active_run.service
+package com.tareq.core.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -14,16 +14,17 @@ import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import com.tareq.core.presentation.designsystem.R
 import com.tareq.core.presentation.ui.formatted
-import com.tareq.run.domain.RunningTracker
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject
+import kotlin.time.Duration
 
 class ActiveRunService : Service() {
     private val notificationManager by lazy {
@@ -34,10 +35,10 @@ class ActiveRunService : Service() {
         NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo)
             .setOnlyAlertOnce(true)
-            .setContentTitle(getString(com.tareq.run.presentation.R.string.active_run))
+            .setContentTitle(getString(R.string.active_run))
     }
 
-    private val runningTracker by inject<RunningTracker>()
+    private val elapsedTime by inject<StateFlow<Duration>>()
 
     private var serviceScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
@@ -85,7 +86,7 @@ class ActiveRunService : Service() {
     }
 
     private fun updateNotification() {
-        runningTracker.elapsedTime.onEach { elapsedTime ->
+        elapsedTime.onEach { elapsedTime ->
             val notification = baseNotification
                 .setContentText(elapsedTime.formatted())
                 .build()
@@ -97,7 +98,7 @@ class ActiveRunService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                getString(com.tareq.run.presentation.R.string.active_run),
+                getString(R.string.active_run),
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)

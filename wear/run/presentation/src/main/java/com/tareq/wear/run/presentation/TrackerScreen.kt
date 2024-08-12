@@ -42,15 +42,27 @@ import androidx.compose.runtime.LaunchedEffect
 import android.content.pm.PackageManager
 import android.os.Build
 import android.widget.Toast
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.tareq.core.notification.ActiveRunService
 import com.tareq.core.presentation.ui.ObserveAsEvent
 
 @Composable
 fun TrackerScreenRoot(
+    onServiceToggle: (isServiceRunning: Boolean) -> Unit,
     viewModel: TrackerViewModel = koinViewModel(),
 ) {
     val context = LocalContext.current
+    val state = viewModel.state
+    val isServiceActive by ActiveRunService.isServiceActive.collectAsStateWithLifecycle()
+
+    LaunchedEffect(state.isRunActive, state.hasStartedRunning, isServiceActive) {
+        if (state.isRunActive && !isServiceActive) {
+            onServiceToggle(true)
+        }
+    }
     ObserveAsEvent(viewModel.events) { event ->
-        when(event) {
+        when (event) {
             is TrackerEvent.Error -> {
                 Toast.makeText(
                     context,
@@ -58,7 +70,10 @@ fun TrackerScreenRoot(
                     Toast.LENGTH_LONG
                 ).show()
             }
-            TrackerEvent.RunFinished -> Unit
+
+            TrackerEvent.RunFinished -> {
+                onServiceToggle(false)
+            }
         }
     }
 

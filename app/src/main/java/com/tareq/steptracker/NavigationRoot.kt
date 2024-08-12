@@ -12,7 +12,7 @@ import com.tareq.auth.presentation.intro.IntroScreenRoot
 import com.tareq.auth.presentation.login.LoginScreenRoot
 import com.tareq.auth.presentation.register.RegisterScreenRoot
 import com.tareq.run.presentation.active_run.ActiveRunScreenScreenRoot
-import com.tareq.run.presentation.active_run.service.ActiveRunService
+import com.tareq.core.notification.ActiveRunService
 import com.tareq.run.presentation.run_overview.RunOverviewScreenRoot
 
 @Composable

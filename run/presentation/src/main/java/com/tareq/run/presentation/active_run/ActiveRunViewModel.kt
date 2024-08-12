@@ -12,7 +12,7 @@ import com.tareq.core.domain.run.Run
 import com.tareq.core.domain.run.RunRepository
 import com.tareq.run.domain.LocationDataCalculator
 import com.tareq.run.domain.RunningTracker
-import com.tareq.run.presentation.active_run.service.ActiveRunService
+import com.tareq.core.notification.ActiveRunService
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

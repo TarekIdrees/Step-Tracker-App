@@ -27,6 +27,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.data)
     implementation(projects.core.database)
+    implementation(projects.core.notification)
 
     implementation(projects.core.connectiivity.domain)
     implementation(projects.core.connectiivity.data)
@@ -40,6 +41,8 @@ dependencies {
     implementation(projects.run.data)
     implementation(projects.run.location)
     implementation(projects.run.network)
+
+
 
     // Core
     implementation(libs.androidx.core.ktx)
