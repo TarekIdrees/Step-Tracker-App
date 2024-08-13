@@ -3,7 +3,6 @@
 
 ![githup](https://github.com/user-attachments/assets/c564bbc1-1afd-46d3-90b2-8b1a9b35e640)
 
-
 ## Software Concepts
 - Multi-module architecture
 - Gradle for large-scale projects (version catalogs & convention plugins)
@@ -29,3 +28,5 @@
 - [Splash](https://developer.android.com/develop/ui/views/launch/splash-screen)
 - [Version catalog](https://developer.android.com/build/migrate-to-catalogs)
 - [Coil](https://coil-kt.github.io/coil/)
+
+# Demo video (https://youtu.be/92Bi6UZN7r8)
