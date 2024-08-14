@@ -29,4 +29,4 @@
 - [Version catalog](https://developer.android.com/build/migrate-to-catalogs)
 - [Coil](https://coil-kt.github.io/coil/)
 
-# Demo video (https://youtu.be/92Bi6UZN7r8)
+# Demo video (https://youtu.be/weM-fz-XLWU)
